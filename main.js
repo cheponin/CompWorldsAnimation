@@ -69,7 +69,7 @@ Background.prototype.draw = function (ctx) {
     Entity.prototype.draw.call(this);
 }
 
-function Unicorn(game) {
+function Cat(game) {
     this.animation = new Animation(ASSET_MANAGER.getAsset("./zombiehuntercat.png"), 74, 167, 80, 100, 0.15, 6, true, true);
     this.jumpAnimation = new Animation(ASSET_MANAGER.getAsset("./zombiehuntercat.png"), 74, 270, 80, 160, 0.15, 6, false, true);
     this.jumping = false;
@@ -78,10 +78,10 @@ function Unicorn(game) {
     Entity.call(this, game, 0, 400);
 }
 
-Unicorn.prototype = new Entity();
-Unicorn.prototype.constructor = Unicorn;
+Cat.prototype = new Entity();
+Cat.prototype.constructor = Cat;
 
-Unicorn.prototype.update = function () {
+Cat.prototype.update = function () {
     if (this.game.space) this.jumping = true;
     if (this.jumping) {
         if (this.jumpAnimation.isDone()) {
@@ -101,8 +101,8 @@ Unicorn.prototype.update = function () {
     Entity.prototype.update.call(this);
 }
 
-Unicorn.prototype.draw = function (ctx) {
-    if (this.jumping) { 
+Cat.prototype.draw = function (ctx) {
+    if (this.jumping) {
         this.jumpAnimation.drawFrame(this.game.clockTick, ctx, this.x + 17, this.y - 70);
     }
     else {
@@ -124,10 +124,10 @@ ASSET_MANAGER.downloadAll(function () {
 
     var gameEngine = new GameEngine();
     var bg = new Background(gameEngine);
-    var unicorn = new Unicorn(gameEngine);
+    var cat = new Cat(gameEngine);
 
     gameEngine.addEntity(bg);
-    gameEngine.addEntity(unicorn);
+    gameEngine.addEntity(cat);
 
     gameEngine.init(ctx);
     gameEngine.start();
