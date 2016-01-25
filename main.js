@@ -22,7 +22,8 @@ Animation.prototype.drawFrame = function (tick, ctx, x, y, scaleBy) {
     } else if (this.isDone()) {
         return;
     }
-    var index = this.reverse ? this.frames - this.currentFrame() - 1 : this.currentFrame();
+    //var index = this.reverse ? this.frames - this.currentFrame() - 1 : this.currentFrame();
+    var index = this.currentFrame();
     var vindex = 0;
     if ((index + 1) * this.frameWidth + this.startX > this.spriteSheet.width) {
         index -= Math.floor((this.spriteSheet.width - this.startX) / this.frameWidth);
